@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import { IntroPage } from "../pages/intro/intro";
+import { HomePage } from "../pages/home/home";
 
 import { ConfigProvider } from "../providers/config/config";
 
@@ -15,11 +15,11 @@ import { ConfigProvider } from "../providers/config/config";
   ]
 })
 export class MyApp {
-  rootPage:any;
+  rootPage: any;
 
   constructor(
-    platform: Platform, 
-    statusBar: StatusBar, 
+    platform: Platform,
+    statusBar: StatusBar,
     splashScreen: SplashScreen,
     configProvider: ConfigProvider
   ) {
@@ -28,13 +28,13 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
 
       let config = configProvider.getConfigData();
-      if(config == null){
-          this.rootPage = IntroPage;
-          configProvider.setConfigData(false);
-      }else{
-          this.rootPage = TabsPage;
+      if (config == null) {
+        this.rootPage = HomePage;
+        configProvider.setConfigData(false);
+      } else {
+        this.rootPage = TabsPage;
       }
-      
+
       console.log(config);
 
       statusBar.styleDefault();
